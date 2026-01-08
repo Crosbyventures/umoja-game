@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UMOJA Daily Buy Lottery</title>
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b0f14;color:#e9eef5}
+    .wrap{max-width:720px;margin:0 auto;padding:24px}
+    .card{background:#111825;border:1px solid #223049;border-radius:16px;padding:18px;margin:14px 0}
+    h1{margin:10px 0 6px;font-size:28px}
+    .badge{display:inline-block;background:#1f2a3d;border:1px solid #2e3d59;padding:6px 10px;border-radius:999px;font-size:12px}
+    .btn{display:block;text-decoration:none;text-align:center;background:#f0b90b;color:#0b0f14;
+         padding:14px 16px;border-radius:12px;font-weight:700;margin:10px 0}
+    .btn2{display:block;text-decoration:none;text-align:center;background:#1c2535;color:#e9eef5;
+         padding:12px 16px;border-radius:12px;font-weight:700;margin:10px 0;border:1px solid #2e3d59}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .copy{flex:1;min-width:240px;background:#0e1522;border:1px solid #223049;border-radius:12px;padding:12px}
+    code{word-break:break-all}
+    .small{opacity:.85;font-size:13px;line-height:1.45}
+    .muted{opacity:.7}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="badge">BNB Chain • PancakeSwap • Sell Lock Safe</div>
+    <h1>UMOJA Daily Buy Lottery</h1>
+    <div class="small muted">Swap • Hold • Support — boost real DAU & on-chain usage.</div>
+
+    <div class="card">
+      <a class="btn" href="https://pancakeswap.finance/swap?outputCurrency=0x8d6a79567a701fce55b62c15d0fbb765913ac84a" target="_blank" rel="noopener">
+        ✅ BUY UMOJA ON PANCAKESWAP
+      </a>
+      <a class="btn2" href="https://t.me/UmojaGlobal" target="_blank" rel="noopener">
+        💬 Join Telegram: @UmojaGlobal
+      </a>
+    </div>
+
+    <div class="card">
+      <h3>How to Play</h3>
+      <div class="small">
+        1) Swap <b>BNB → UMOJA</b> on PancakeSwap.<br/>
+        2) <b>1 entry per wallet per day</b> (new day = new chance).<br/>
+        3) <b>Hold for 24h+</b> (global sell lock active — no selling required).<br/>
+        4) Winners announced daily in Telegram with TX proof.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Token Contract (BSC)</h3>
+      <div class="row">
+        <div class="copy">
+          <div class="small muted">UMOJA v2</div>
+          <code id="addr">0x8d6a79567a701fce55b62c15d0fbb765913ac84a</code>
+        </div>
+        <div style="flex:0 0 180px;min-width:180px;">
+          <button class="btn2" onclick="copyAddr()">📋 Copy Address</button>
+        </div>
+      </div>
+      <div class="small muted" style="margin-top:10px;">
+        Tip: If the token doesn’t appear, paste the contract in PancakeSwap.
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Disclaimer</h3>
+      <div class="small muted">
+        This is a community activity. Not financial advice. Crypto involves risk. Participation is optional.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyAddr(){
+      const t = document.getElementById("addr").innerText.trim();
+      navigator.clipboard.writeText(t).then(()=>alert("Copied: " + t));
+    }
+  </script>
+</body>
+</html>
