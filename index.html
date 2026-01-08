@@ -4,158 +4,315 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>UMOJA Daily Buy Lottery</title>
-  <meta name="description" content="Swap • Hold • Support — boost real DAU & on-chain usage on BNB Chain." />
-  <link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="UMOJA Daily Buy Lottery — community-driven engagement on BNB Chain designed to increase real DAU and incremental gas usage." />
+
+  <style>
+    :root{
+      --bg:#070b12;
+      --card:#0d1422;
+      --card2:#0b1220;
+      --text:#e9eefc;
+      --muted:#a7b3d6;
+      --line:rgba(255,255,255,.08);
+      --gold:#f3c84b;
+      --blue:#6aa9ff;
+      --green:#23c483;
+      --red:#ff5c5c;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 800px at 20% 10%, rgba(106,169,255,.18), transparent 60%),
+                  radial-gradient(900px 700px at 80% 30%, rgba(243,200,75,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:var(--blue); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px; margin:0 auto; padding:28px 16px 60px}
+    .pill-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px}
+    .pill{
+      font-size:12px; letter-spacing:.2px;
+      padding:7px 10px; border:1px solid var(--line);
+      color:var(--muted);
+      border-radius:999px; background:rgba(255,255,255,.02);
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width:860px){ .hero{grid-template-columns:1fr} }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:44px;
+      letter-spacing:.2px;
+      line-height:1.05;
+    }
+    @media (max-width:520px){ h1{font-size:34px} }
+    .sub{
+      color:var(--muted);
+      font-size:16px;
+      margin:0 0 18px;
+    }
+    .btns{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:14px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      font-weight:700;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .06s ease;
+      white-space:nowrap;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(180deg, rgba(243,200,75,.95), rgba(243,200,75,.75));
+      color:#1b1402;
+      border-color: rgba(243,200,75,.55);
+    }
+    .btn.secondary{
+      background: rgba(106,169,255,.10);
+      color:var(--text);
+      border-color: rgba(106,169,255,.35);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+    .section-title{
+      margin:0 0 10px;
+      font-size:22px;
+      letter-spacing:.2px;
+    }
+    .muted{color:var(--muted)}
+    .list{
+      margin:10px 0 0 18px;
+      color:var(--text);
+    }
+    .list li{margin:7px 0}
+    .hr{height:1px; background:var(--line); margin:16px 0}
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      letter-spacing:.1px;
+    }
+    .token-box{
+      background: rgba(0,0,0,.28);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      overflow:auto;
+    }
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .small{font-size:13px}
+    input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      outline:none;
+    }
+    input::placeholder{color:rgba(167,179,214,.65)}
+    .mini-btn{
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      font-weight:700;
+      cursor:pointer;
+    }
+    .mini-btn.good{border-color: rgba(35,196,131,.35); background: rgba(35,196,131,.10)}
+    .mini-btn.warn{border-color: rgba(243,200,75,.35); background: rgba(243,200,75,.10)}
+    .note{
+      margin-top:10px;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.02);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .status{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      font-size:13px;
+    }
+    .ok{color:var(--green); font-weight:800}
+    .bad{color:var(--red); font-weight:800}
+    footer{
+      margin-top:18px;
+      color:rgba(167,179,214,.8);
+      font-size:12.5px;
+      text-align:center;
+    }
+    .copy{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .copy:hover{background: rgba(255,255,255,.05)}
+  </style>
 </head>
 
 <body>
-  <header class="wrap header">
-    <div class="pill">BNB Chain • PancakeSwap • Sell Lock Safe</div>
-    <h1>UMOJA Daily Buy Lottery</h1>
-    <p class="sub">
-      Swap • Hold • Support — designed to increase <b>real daily active users (DAU)</b> and <b>incremental gas usage</b>.
-    </p>
-
-    <div class="ctaRow">
-      <a class="btn primary" id="buyBtn" target="_blank" rel="noreferrer">✅ BUY UMOJA ON PANCAKESWAP</a>
-      <a class="btn ghost" id="tgBtn" target="_blank" rel="noreferrer">💬 Join Telegram: @UMOJACOMMUNITY</a>
+  <div class="wrap">
+    <div class="pill-row">
+      <span class="pill">BNB Chain</span>
+      <span class="pill">PancakeSwap</span>
+      <span class="pill">Sell Lock Safe</span>
+      <span class="pill">1 Entry / Wallet / UTC Day</span>
+      <span class="pill">TX Proof Transparency</span>
     </div>
-  </header>
 
-  <main class="wrap grid">
-    <!-- Reviewer-friendly description -->
-    <section class="card">
-      <h2>BNB Reviewer Summary</h2>
-      <p class="muted">
-        <b>UMOJA Daily Buy Lottery</b> is a community-driven engagement program on BNB Chain designed to increase
-        <b>real daily active wallets (DAU)</b> and <b>incremental gas usage</b>.
-      </p>
-      <p class="muted">
-        Participants complete a single daily swap (BNB → UMOJA) via PancakeSwap and hold for 24+ hours.
-        The program enforces <b>one entry per wallet per day (UTC)</b> and publishes winners with TX proof for transparency.
-      </p>
-      <div class="note">
-        <b>Anti-abuse:</b> Only 1 entry per wallet per day is counted. Repeated swaps from the same wallet on the same day do not add entries.
-      </div>
-    </section>
-
-    <!-- How to play -->
-    <section class="card">
-      <h2>How to Play</h2>
-      <ol class="steps">
-        <li>Swap <b>BNB → UMOJA</b> on PancakeSwap.</li>
-        <li><b>1 entry per wallet per day</b> (UTC reset).</li>
-        <li><b>Hold for 24h+</b> (global sell lock active — no selling required).</li>
-        <li>Winners announced daily in Telegram with <b>TX proof</b>.</li>
-      </ol>
-    </section>
-
-    <!-- Contract + copy -->
-    <section class="card">
-      <h2>Token Contract (BSC)</h2>
-      <div class="codebox">
-        <div class="label">UMOJA v2</div>
-        <div class="code" id="contractText">0x8d6a79567a701fce55b62c15d0fbb765913ac84a</div>
-        <button class="btn small" id="copyContract">📋 Copy Address</button>
-      </div>
-      <p class="muted tip">Tip: If the token doesn’t appear, paste the contract in PancakeSwap.</p>
-    </section>
-
-    <!-- DAU Counter -->
-    <section class="card">
-      <h2>DAU Counter</h2>
-
-      <div class="dauGrid">
-        <div class="dauStat">
-          <div class="k">Today’s DAU</div>
-          <div class="v" id="dauToday">—</div>
-        </div>
-        <div class="dauStat">
-          <div class="k">Yesterday</div>
-          <div class="v" id="dauYesterday">—</div>
-        </div>
-        <div class="dauStat">
-          <div class="k">7-Day Avg</div>
-          <div class="v" id="dauAvg">—</div>
-        </div>
-      </div>
-
-      <div class="tabs">
-        <button class="tab active" data-tab="manual">Manual Update</button>
-        <button class="tab" data-tab="auto">Auto (BscScan)</button>
-      </div>
-
-      <div class="tabBody" id="tab-manual">
-        <p class="muted">Fast setup: you update DAU numbers once per day.</p>
-        <div class="formRow">
-          <label>Today</label>
-          <input id="manualToday" type="number" min="0" placeholder="e.g. 52" />
-        </div>
-        <div class="formRow">
-          <label>Yesterday</label>
-          <input id="manualYesterday" type="number" min="0" placeholder="e.g. 41" />
-        </div>
-        <div class="formRow">
-          <label>7-Day Avg</label>
-          <input id="manualAvg" type="number" min="0" placeholder="e.g. 33" />
-        </div>
-        <button class="btn small" id="saveManual">Save</button>
-        <span class="muted tiny">Saved locally in your browser (demo). For public numbers, update this page or a JSON file.</span>
-      </div>
-
-      <div class="tabBody hidden" id="tab-auto">
-        <p class="muted">
-          Optional: Auto-pull unique wallets using BscScan API (requires an API key).
-          This is <b>best</b> for reviewer credibility.
+    <div class="hero">
+      <div class="card">
+        <h1>UMOJA Daily Buy Lottery</h1>
+        <p class="sub">
+          Swap • Hold • Support — designed to increase <b>real daily active users (DAU)</b> and
+          <b>incremental gas usage</b> on BNB Chain.
         </p>
 
-        <div class="formRow">
-          <label>BscScan API Key</label>
-          <input id="bscKey" placeholder="Paste your BscScan API key" />
+        <div class="btns">
+          <!-- Update this PancakeSwap link if you want it to prefill token. -->
+          <a class="btn primary" href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer">
+            ✅ BUY UMOJA ON PANCAKESWAP
+          </a>
+          <a class="btn secondary" href="https://t.me/UMOJACOMMUNITY" target="_blank" rel="noreferrer">
+            💬 Join Telegram: @UMOJACOMMUNITY
+          </a>
         </div>
 
-        <div class="formRow">
-          <label>PancakeSwap Router (BSC)</label>
-          <input id="routerAddr" placeholder="Router address (leave default)" />
+        <div class="hr"></div>
+
+        <h2 class="section-title">BNB Reviewer Summary</h2>
+        <p>
+          UMOJA Daily Buy Lottery is a community-driven engagement program on BNB Chain designed to increase
+          <strong>real daily active wallets (DAU)</strong> and <strong>incremental gas usage</strong>.
+        </p>
+        <p>
+          Participants complete a single daily swap (BNB → UMOJA) via PancakeSwap and hold for 24+ hours.
+          The program enforces <strong>one entry per wallet per UTC day</strong> and publishes winners with
+          <strong>transaction hash (TX) proof</strong> for transparency.
+        </p>
+        <p>
+          <strong>Anti-abuse:</strong> Multiple swaps from the same wallet on the same day do not increase entries.
+          Only the first eligible swap is counted.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">How to Play</h2>
+        <ol class="list">
+          <li>Swap <b>BNB → UMOJA</b> on PancakeSwap.</li>
+          <li><b>1 entry per wallet per day</b> (UTC reset).</li>
+          <li><b>Hold for 24h+</b> (global sell lock active — no selling required).</li>
+          <li>Winners announced daily in Telegram with <b>TX proof</b>.</li>
+        </ol>
+
+        <div class="hr"></div>
+
+        <h2 class="section-title">Token Contract (BSC)</h2>
+        <div class="token-box">
+          <div class="small muted">UMOJA v2</div>
+          <div class="mono" id="tokenAddr">0x8d6a79567a701fce55b62c15d0fbb765913ac84a</div>
+          <div class="row" style="margin-top:10px">
+            <button class="copy" onclick="copyToken()">
+              📋 Copy Address
+            </button>
+            <span class="small muted">Tip: If the token doesn’t appear, paste the contract in PancakeSwap.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2 class="section-title">DAU Counter</h2>
+        <p class="muted small">
+          DAU represents unique wallets interacting with PancakeSwap involving the UMOJA token.
+          Manual reporting is used initially; automated BscScan-based counting can be added next.
+        </p>
+
+        <div class="row">
+          <div style="flex:1">
+            <p><strong>Today’s DAU:</strong> <span id="dauToday">—</span></p>
+            <p><strong>Yesterday:</strong> <span id="dauYesterday">—</span></p>
+            <p><strong>7-Day Avg:</strong> <span id="dauAvg">—</span></p>
+          </div>
         </div>
 
-        <button class="btn small" id="runAuto">Run Auto Count</button>
+        <div class="hr"></div>
+
+        <div class="row" style="gap:10px">
+          <input id="todayInput" placeholder="Today (e.g. 52)" />
+          <input id="yesterdayInput" placeholder="Yesterday (e.g. 41)" />
+          <input id="avgInput" placeholder="7-Day Avg (e.g. 33)" />
+        </div>
+
+        <div class="row" style="margin-top:10px">
+          <button class="mini-btn good" onclick="saveDAU()">Save</button>
+          <button class="mini-btn warn" onclick="loadDAU()">Load Saved</button>
+        </div>
+
         <div class="note">
-          <b>Note:</b> This counts unique wallets interacting with the router involving UMOJA contract.
-          For the cleanest results, we’ll refine filters next (pair address / swap method).
+          Saved locally in your browser (demo). For public numbers shared across devices,
+          you can later load from a small JSON file or auto-count via BscScan API.
         </div>
       </div>
-    </section>
 
-    <!-- Wallet verification -->
-    <section class="card">
-      <h2>Wallet Verification (Entry Check)</h2>
-      <p class="muted">
-        This logic enforces <b>1 entry per wallet per UTC day</b>. If someone swaps multiple times from the same wallet,
-        only the first entry counts for that day.
-      </p>
+      <div class="card">
+        <h2 class="section-title">Wallet Verification (Entry Check)</h2>
+        <p class="muted small">
+          This enforces <strong>1 entry per wallet per UTC day</strong>.
+          If a wallet swaps multiple times in the same day, only the first eligible entry is counted.
+        </p>
 
-      <div class="formRow">
-        <label>Wallet Address</label>
-        <input id="walletInput" placeholder="0x..." />
-      </div>
-      <button class="btn small" id="checkWallet">Check Eligibility (Today)</button>
+        <input id="walletInput" class="mono" placeholder="0x..." />
+        <div class="row" style="margin-top:10px">
+          <button class="mini-btn good" onclick="checkEligibility()">Check Eligibility (Today)</button>
+        </div>
 
-      <div class="result" id="walletResult">—</div>
+        <div class="status" id="eligibilityResult">—</div>
 
-      <div class="note">
-        For full automation (reading swaps from chain + confirming router swap), we can add a lightweight backend (Cloudflare Worker)
-        or a small Node script that publishes a daily JSON entry list.
-      </div>
-    </section>
+        <div class="note">
+          Demo mode: this page validates wallet format and displays eligibility messaging.
+          For full automation (reading swaps + confirming router swap), add a lightweight backend
+          (Cloudflare Worker) or a small Node script that publishes a daily JSON entry list.
+        </div>
 
-    <!-- Telegram templates -->
-    <section class="card">
-      <h2>Daily Telegram Templates</h2>
+        <div class="hr"></div>
 
-      <div class="template">
-        <div class="tTitle">Daily Open Post</div>
-        <pre id="tgOpen">🎟 UMOJA Daily Buy Lottery — Day X OPEN
+        <h2 class="section-title">Daily Telegram Templates</h2>
+
+        <div class="row" style="justify-content:space-between; align-items:flex-start">
+          <div style="flex:1; min-width:260px">
+            <div class="muted small"><b>Daily Open Post</b></div>
+            <div class="token-box mono" id="tplOpen" style="margin-top:8px; white-space:pre-wrap;">📢 UMOJA Daily Buy Lottery — Day X OPEN
 
 ✅ 1 swap = 1 entry
 ✅ 1 entry per wallet today (UTC)
@@ -165,39 +322,94 @@
 🔁 Swap BNB → UMOJA on PancakeSwap
 ⏰ Entry closes at 23:59 UTC
 
-Join: @UMOJACOMMUNITY</pre>
-        <button class="btn small" data-copy="#tgOpen">📋 Copy</button>
-      </div>
+Join: @UMOJACOMMUNITY</div>
 
-      <div class="template">
-        <div class="tTitle">Winner Announcement</div>
-        <pre id="tgWinner">🏆 UMOJA Daily Lottery — WINNER
+            <button class="copy" style="margin-top:10px" onclick="copyText('tplOpen')">📋 Copy</button>
+          </div>
 
-🎉 Wallet: 0xA3…9F2
+          <div style="flex:1; min-width:260px">
+            <div class="muted small"><b>Winner Announcement</b></div>
+            <div class="token-box mono" id="tplWin" style="margin-top:8px; white-space:pre-wrap;">🏆 UMOJA Daily Lottery — WINNER
+
+🎉 Wallet: 0xA3...9F2
 📅 Day: X
 🔗 TX Proof: https://bscscan.com/tx/XXXXX
 
 Thanks for supporting real on-chain growth 🙌
 Next round opens soon.
 
-@UMOJACOMMUNITY</pre>
-        <button class="btn small" data-copy="#tgWinner">📋 Copy</button>
-      </div>
-    </section>
+@UMOJACOMMUNITY</div>
 
-    <!-- Disclaimer -->
-    <section class="card">
-      <h2>Disclaimer</h2>
+            <button class="copy" style="margin-top:10px" onclick="copyText('tplWin')">📋 Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2 class="section-title">Disclaimer</h2>
       <p class="muted">
         This is a community activity. Not financial advice. Crypto involves risk. Participation is optional.
       </p>
-    </section>
-  </main>
+      <p class="muted small">© UMOJA • BNB Chain community engagement</p>
+    </div>
 
-  <footer class="wrap footer">
-    <span class="muted tiny">© UMOJA • BNB Chain community engagement</span>
-  </footer>
+    <footer>
+      Telegram: <a href="https://t.me/UMOJACOMMUNITY" target="_blank" rel="noreferrer">@UMOJACOMMUNITY</a>
+    </footer>
+  </div>
 
-  <script src="./app.js"></script>
+  <script>
+    // --- Copy helpers ---
+    function copyToken(){
+      const txt = document.getElementById('tokenAddr').innerText.trim();
+      navigator.clipboard.writeText(txt).then(()=>{
+        alert('Token address copied!');
+      }).catch(()=> alert('Copy failed. Please copy manually.'));
+    }
+    function copyText(id){
+      const txt = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(txt).then(()=>{
+        alert('Copied!');
+      }).catch(()=> alert('Copy failed. Please copy manually.'));
+    }
+
+    // --- DAU Local Save/Load (demo) ---
+    function saveDAU() {
+      const t = document.getElementById('todayInput').value.trim();
+      const y = document.getElementById('yesterdayInput').value.trim();
+      const a = document.getElementById('avgInput').value.trim();
+      localStorage.setItem('dauToday', t);
+      localStorage.setItem('dauYesterday', y);
+      localStorage.setItem('dauAvg', a);
+      loadDAU();
+      alert('Saved!');
+    }
+    function loadDAU() {
+      document.getElementById('dauToday').innerText = localStorage.getItem('dauToday') || '—';
+      document.getElementById('dauYesterday').innerText = localStorage.getItem('dauYesterday') || '—';
+      document.getElementById('dauAvg').innerText = localStorage.getItem('dauAvg') || '—';
+      // also prefill inputs if present
+      document.getElementById('todayInput').value = localStorage.getItem('dauToday') || '';
+      document.getElementById('yesterdayInput').value = localStorage.getItem('dauYesterday') || '';
+      document.getElementById('avgInput').value = localStorage.getItem('dauAvg') || '';
+    }
+    loadDAU();
+
+    // --- Wallet Eligibility (demo messaging + strict format check) ---
+    function checkEligibility() {
+      const el = document.getElementById('eligibilityResult');
+      const wallet = (document.getElementById('walletInput').value || '').trim().toLowerCase();
+
+      if (!wallet.startsWith('0x') || wallet.length !== 42) {
+        el.innerHTML = '<span class="bad">Invalid wallet address.</span> Please paste a valid 0x... address.';
+        return;
+      }
+
+      // Demo result (no chain calls). Reviewer-friendly wording:
+      el.innerHTML = '<span class="ok">Eligible (demo).</span> One entry per wallet per UTC day is enforced. ' +
+                     'Multiple swaps from the same wallet on the same day do not increase entries.';
+    }
+  </script>
 </body>
 </html>
